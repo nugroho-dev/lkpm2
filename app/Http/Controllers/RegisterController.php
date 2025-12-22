@@ -18,16 +18,17 @@ class RegisterController extends Controller
     {
         
         
-        $data = Oss_rba_nib::firstWhere('nib', request(['email']));
-        if (empty($data->nib)) {
+        $data = Oss_rba_nib::firstWhere('nib', request('email'));
+        if (empty($data) || empty($data->nib)) {
             return redirect('/register')->with('loginError', 'NIB Tidak Ditemukan/Tidak Terdaftar');
-        }
-        else{
-        $validatedData = $request->validate(['email' => 'required|unique:users']);
-        $validatedData['password'] = Hash::make($data->nib);
-        User::create($validatedData);
-        //$request->session()->flash('success', 'Registasi Berhasil');
-        return redirect('/')->with('success', 'Registrasi Berhasil, silakan masuk');
+        } else {
+            $validatedData = $request->validate([
+                'email' => 'required|unique:users',
+            ]);
+            $validatedData['nib'] = $data->nib;
+            $validatedData['password'] = Hash::make($data->nib);
+            User::create($validatedData);
+            return redirect('/')->with('success', 'Registrasi Berhasil, silakan masuk');
         }
     }
 }
