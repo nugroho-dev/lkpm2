@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Oss_rba_izins extends Model
 {
     use HasFactory;
+    protected $connection = 'mysql2';
+    protected $table = 'izin';
     public function ossrbanibizin()
     {
         return $this->belongsTo(Oss_rba_nib::class, 'nib');

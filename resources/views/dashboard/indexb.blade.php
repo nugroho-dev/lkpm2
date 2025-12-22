@@ -63,7 +63,7 @@
                                   placeholder="Readonly input here..."
                                   readonly
                                   disabled
-                                  value="{{ Carbon\Carbon::parse($tanggal_terbit)->isoFormat('D MMMM Y') }}"
+                                  value="{{ \Carbon\Carbon::hasFormat($tanggal_terbit, 'Y-m-d') ? \Carbon\Carbon::parse($tanggal_terbit)->isoFormat('D MMMM Y') : $tanggal_terbit }}"
                                 />
                               </div>
                               <div class="mb-3">
@@ -150,7 +150,7 @@
                             
                             <tr>
                               <td>{{ $all->nib }} </td>
-                              <td>{{ Carbon\Carbon::parse($all->day_of_tanggal_terbit_oss)->isoFormat('D MMMM Y') }}</td>
+                              <td>{{ \Carbon\Carbon::hasFormat($all->day_of_tanggal_terbit_oss, 'Y-m-d') ? \Carbon\Carbon::parse($all->day_of_tanggal_terbit_oss)->isoFormat('D MMMM Y') : $all->day_of_tanggal_terbit_oss }}</td>
                               <td>{{ $all->nama_perusahaan }}</td>
                               <td> 
                                 @if($all->status_penanaman_modal=="PMDN")

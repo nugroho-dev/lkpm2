@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Oss_rba_nib extends Model
 {
     use HasFactory;
+    protected $connection = 'mysql2';
+    protected $table = 'nibs';
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {

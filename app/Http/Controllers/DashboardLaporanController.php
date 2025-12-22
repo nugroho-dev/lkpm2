@@ -42,13 +42,19 @@ class DashboardLaporanController extends Controller
             $kl_sektor_pembina = $proyek->kl_sektor_pembina;
         }
 
+        $datas = Oss_rba_proyek_laps::latest()->filter(request(['idproyek']))->paginate(25)->withQueryString();
+        $idProyeks = $datas->pluck('id_proyek')->unique()->toArray();
+        $proyeks = Oss_rba_proyeks::on('mysql2')->whereIn('id_proyek', $idProyeks)->get()->keyBy('id_proyek');
+        foreach ($datas as $lap) {
+            $lap->proyek = $proyeks[$lap->id_proyek] ?? null;
+        }
         return view('dashboard.laporan.index', [
             'title' => 'Proyek' . $nama_perusahaan,
             //'alls' => Oss_rba_proyeks::firstWhere('nib', request('folder'))->get(),
             'names' => Oss_rba_nib::where('nib', $nib)->limit(1)->get(),
             //'nibs' => Usernibs::where('user_id', auth()->user()->id)->latest()->paginate(5),
             //'items' => Oss_rba_nib::filter(request(['search']))->get(),
-            "datas" => Oss_rba_proyek_laps::latest()->filter(request(['idproyek']))->paginate(25)->withQueryString(),
+            "datas" => $datas,
             'id_proyek' =>  $id_proyek,
             'nibp' => $nibp,
             'npwp_perusahaan' => $npwp_perusahaan,
@@ -73,8 +79,11 @@ class DashboardLaporanController extends Controller
      */
     public function create()
     {
+        $nib = '';
         $data = Oss_rba_nib::firstWhere('nib', auth()->user()->email);
-        $nib = $data->nib;
+        if ($data) {
+            $nib = $data->nib;
+        }
         $nama_perusahaan = '';
         if (request('idproyek')) {
             $proyek = Oss_rba_proyeks::firstWhere('id_proyek', request('idproyek'));
@@ -139,16 +148,18 @@ class DashboardLaporanController extends Controller
      */
     public function show(Oss_rba_proyek_laps $laporan)
     {
-        $datas = Usernibs::where('user_id', auth()->user()->id)->limit(1)->get();
-        foreach ($datas as $key) {
-
-            $nib = $key->nib;
+        $nib = '';
+        $data = Oss_rba_nib::firstWhere('nib', auth()->user()->email);
+        if ($data) {
+            $nib = $data->nib;
         }
         $nama_perusahaan = '';
         if (request('idproyek')) {
             $proyek = Oss_rba_proyeks::firstWhere('id_proyek', request('idproyek'));
             $id_proyek =  $proyek->id_proyek;
         }
+        // Relasi manual proyek lintas database
+        $laporan->proyek = Oss_rba_proyeks::on('mysql2')->where('id_proyek', $laporan->id_proyek)->first();
         return view('dashboard.laporan.show', [
             'title' => 'Dashboard',
             //'alls' => Oss_rba_proyeks::where('nib', $nib)->get(),
@@ -166,10 +177,10 @@ class DashboardLaporanController extends Controller
      */
     public function edit(Oss_rba_proyek_laps $laporan)
     {
-        $datas = Usernibs::where('user_id', auth()->user()->id)->limit(1)->get();
-        foreach ($datas as $key) {
-
-            $nib = $key->nib;
+        $nib = '';
+        $data = Oss_rba_nib::firstWhere('nib', auth()->user()->email);
+        if ($data) {
+            $nib = $data->nib;
         }
         $nama_perusahaan = '';
         if (request('idproyek')) {
