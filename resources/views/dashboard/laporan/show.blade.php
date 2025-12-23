@@ -17,10 +17,10 @@
                       Lihat Laporan
                       </div>
                       <div class="demo-inline-spacing text-end">
-                        <a href="/proyek/laporan?idproyek={{ $id_proyek }}" type="button" class="btn btn-primary col-lg-2"><i class='bx bx-arrow-back' ></i> Kembali</a>
-                        <a href="/proyek/laporan/{{ $post->id }}/edit?idproyek={{ $id_proyek }}" class="btn btn-warning col-lg-2"><i class='bx bxs-edit-alt'></i> Edit</a>
+                        <a href="{{ url('/proyek/laporan?idproyek=' . $id_proyek) }}" type="button" class="btn btn-primary col-lg-2"><i class='bx bx-arrow-back' ></i> Kembali</a>
+                        <a href="{{ url('/proyek/laporan/' . $post->id . '/edit?idproyek=' . $id_proyek) }}" class="btn btn-warning col-lg-2"><i class='bx bxs-edit-alt'></i> Edit</a>
                         <button class="btn btn-danger col-lg-2"  data-bs-toggle="modal" data-bs-target="#smallModal"><i class='bx bxs-eraser'></i> Hapus</button>
-                        <a href="/proyek/download" target="_blank" class="btn btn-info col-lg-2"><i class='bx bxs-download'></i> Download</a>
+                        <a href="{{ url('/proyek/download') }}" target="_blank" class="btn btn-info col-lg-2"><i class='bx bxs-download'></i> Download</a>
                       </div>
                     </h5>
                     <div class="card-body">
@@ -407,7 +407,7 @@
                   <div class="modal-body text-justify">
                     
                     <p class="lead mb-0 " style="text-align: justify; text-justify: inter-word;">Apakah Anda Akan Menghapus Laporan Kegiatan Penanaman Modal Periode {{ $post->tahun }} {{ $post->periode == 1 ? "Semester I":"Semester II" }} ? </p>
-                    <form method="post" action="/proyek/laporan/{{ $post->id }}" class="d-inline">
+                    <form method="post" action="{{ url('/proyek/laporan/' . $post->id) }}" class="d-inline">
                       @method('delete')
                       @csrf
                     <input type="hidden" id="nameSmall" class="form-control" name="id_proyek" value="{{ $post->id_proyek }}"/>

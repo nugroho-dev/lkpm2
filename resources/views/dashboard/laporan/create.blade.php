@@ -374,7 +374,7 @@
 
                             <div class="demo-inline-spacing text-center">
                               <button type="submit" class="btn btn-primary col-lg-2"><i class='bx bxs-save'></i> Simpan</button>
-                              <a href="/proyek/laporan?idproyek={{ $id_proyek }}" type="button" class="btn btn-danger col-lg-2"><i class='bx bxs-x-circle'></i> Batal</a>
+                              <a href="{{ url('/proyek/laporan?idproyek=' . $id_proyek) }}" type="button" class="btn btn-danger col-lg-2"><i class='bx bxs-x-circle'></i> Batal</a>
                             </div>
                           </form>
 

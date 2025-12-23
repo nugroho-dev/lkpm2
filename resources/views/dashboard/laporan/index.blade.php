@@ -106,7 +106,7 @@
                     <div class="card-body">
                       <div class="col-md-12 col-lg-12">
                         <div class=" text-end mb-3">
-                          <a href="/proyek/laporan/create?idproyek={{ $id_proyek }}" class="btn btn-primary"><i class='bx bxs-file'></i> Buat Laporan</a>
+                          <a href="{{ url('/proyek/laporan/create?idproyek=' . $id_proyek) }}" class="btn btn-primary"><i class='bx bxs-file'></i> Buat Laporan</a>
                         </div>
                     </div>
                        <div class="table-responsive text-nowrap">
@@ -137,7 +137,7 @@
                               <td>
                                 
                             
-                                    <a class="btn btn-info" href="/proyek/laporan/{{ $data->id }}?idproyek={{ $id_proyek }}"
+                                    <a class="btn btn-info" href="{{ url('/proyek/laporan/' . $data->id . '?idproyek=' . $id_proyek) }}"
                                       ><i class='bx bxs-file-doc me-1'></i> Lihat</a
                                     >
                                 

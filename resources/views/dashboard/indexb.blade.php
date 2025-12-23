@@ -20,12 +20,12 @@
                       </div>
                       <div class="col-sm-5 text-center text-sm-left">
                         <div class="card-body pb-0 px-0 px-md-4">
-                          <img
-                            src=" /img/illustrations/man-with-laptop-light.png"
+                            <img
+                            src="{{ url('img/illustrations/man-with-laptop-light.png') }}"
                             height="140"
                             alt="View Badge User"
-                            data-app-dark-img="/img/illustrations/man-with-laptop-dark.png"
-                            data-app-light-img="/img/illustrations/man-with-laptop-light.png"
+                            data-app-dark-img="{{ url('img/illustrations/man-with-laptop-dark.png') }}"
+                            data-app-light-img="{{ url('img/illustrations/man-with-laptop-light.png') }}"
                           />
                         </div>
                       </div>

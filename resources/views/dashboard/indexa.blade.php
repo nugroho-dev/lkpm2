@@ -16,7 +16,7 @@
                      <div class="alert alert-danger shadow-lg text-capitalize" role="alert">Anda Belum Mengkaitkan NIB dengan sistem!</div>
                         <div class="row mb-3">
                           <div class="col-md-4">
-                            <form action="/dashboard">
+                            <form action="{{ url('/dashboard') }}">
                             <div class="input-group">
                               <input
                                 type="text"
@@ -59,7 +59,7 @@
                                 <td class="text-nowrap"> {{ $item->nama_perusahaan }}</td>
                                 <td class="text-nowrap"> {{ $item->uraian_jenis_perusahaan }}</td>
                                 <td class="text-wrap" > {{ $item->alamat_perusahaan }}</td>
-                                <td> <form action="/store/nib" method="post">
+                                <td> <form action="{{ url('/store/nib') }}" method="post">
                                   @csrf
                                   <input type="hidden" id="user_id" name="user_id" required autofocus value="{{ auth()->user()->id}}">
                                   <input type="hidden" id="nib" name="nib" required autofocus value="{{ $item->nib }}">

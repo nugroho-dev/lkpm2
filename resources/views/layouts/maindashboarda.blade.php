@@ -32,7 +32,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href=" img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{ url('img/favicon/favicon.ico') }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,26 +43,27 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="vendor/fonts/boxicons.css" />
+
+    <link rel="stylesheet" href="{{ asset('vendor/fonts/boxicons.css') }}" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="css/demo.css" />
-    <link rel="stylesheet" href="vendor/sweetalert2/css/sweetalert2.min.css" />
+    <link rel="stylesheet" href="{{ asset('vendor/css/core.css') }}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset('vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset('css/demo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/css/sweetalert2.min.css') }}" />
   
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/apex-charts/apex-charts.css') }}" />
 
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="vendor/js/helpers.js"></script>
+    <script src="{{ asset('vendor/js/helpers.js') }}"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="js/config.js"></script>
+    <script src="{{ asset('js/config.js') }}"></script>
   </head>
 
   <body>
@@ -158,10 +159,13 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
-                        <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Log Out</span>
-                      </a>
+                      <form action="{{ url('/logout') }}" method="post">
+                        @csrf
+                        <button class="dropdown-item" type="submit">
+                          <i class="bx bx-power-off me-2"></i>
+                          <span class="align-middle">Log Out</span>
+                        </button>
+                      </form>
                     </li>
                   </ul>
                 </li>
@@ -227,21 +231,21 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="vendor/libs/jquery/jquery.js"></script>
-    <script src="vendor/libs/popper/popper.js"></script>
-    <script src="vendor/js/bootstrap.js"></script>
-    <script src="vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/sweetalert2/js/sweetalert2.all.min.js"></script>
-    <script src="vendor/js/menu.js"></script>
+    <script src="{{ asset('vendor/libs/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('vendor/libs/popper/popper.js') }}"></script>
+    <script src="{{ asset('vendor/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+    <script src="{{ asset('vendor/sweetalert2/js/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('vendor/js/menu.js') }}"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="{{ asset('vendor/libs/apex-charts/apexcharts.js') }}"></script>
     <!-- Main JS -->
-    <script src="/js/main.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
     <!-- Page JS -->
-    <script src="/js/dashboards-analytics.js"></script>
+    <script src="{{ asset('js/dashboards-analytics.js') }}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>

@@ -23,9 +23,9 @@
                         <div class="alert alert-warning" role="alert"><i class='bx bxs-error'></i> Lokasi Izin Usaha Belum Ada ?!</div>
                          @endif
                       </p>
-                      <a href="/proyek/laporan?idproyek={{ $all->id_proyek }}" class="btn btn-primary">Lapor</a>
-                      <a href="/proyek/izin?idproyek={{ $all->id_proyek }}" class="btn btn-primary">Data Izin</a>
-                      <a href="/proyek/laporan?idproyek={{ $all->id_proyek }}" class="btn btn-primary">Lokasi</a>
+                      <a href="{{ url('/proyek/laporan?idproyek=' . $all->id_proyek) }}" class="btn btn-primary">Lapor</a>
+                      <a href="{{ url('/proyek/izin?idproyek=' . $all->id_proyek) }}" class="btn btn-primary">Data Izin</a>
+                      <a href="{{ url('/proyek/laporan?idproyek=' . $all->id_proyek) }}" class="btn btn-primary">Lokasi</a>
                     </div>
                   </div>
                 </div>

@@ -373,7 +373,7 @@
 
                             <div class="demo-inline-spacing text-center">
                               <button type="submit" class="btn btn-primary col-lg-2">Ubah</button>
-                              <a href="/proyek/laporan?idproyek={{ $id_proyek }}" type="button" class="btn btn-danger col-lg-2">Batal</a>
+                              <a href="{{ url('/proyek/laporan?idproyek=' . $id_proyek) }}" type="button" class="btn btn-danger col-lg-2">Batal</a>
                             </div>
                           </form>
 

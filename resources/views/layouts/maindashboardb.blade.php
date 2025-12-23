@@ -73,7 +73,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="{{ url('/') }}" class="app-brand-link">
               <span class="app-brand-logo demo">
                 <svg
                   width="25"
@@ -142,7 +142,7 @@
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             <li class="menu-item {{ Request::is('dashboard*')?' active open':'' }}">
-              <a href="/dashboard" class="menu-link">
+              <a href="{{ url('/dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
@@ -150,7 +150,7 @@
 
             <!-- Layouts -->
             <li class="menu-item">
-              <a href="/proyek" class="menu-link">
+              <a href="{{ url('/proyek') }}" class="menu-link">
                 <i class='menu-icon tf-icons bx bx-buildings'></i>
                 <div data-i18n="Layouts">Data Proyek</div>
               </a>
@@ -166,7 +166,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-account-settings-account.html" class="menu-link">
+                  <a href="{{ url('pages-account-settings-account.html') }}" class="menu-link">
                     <div data-i18n="Account">Account</div>
                   </a>
                 </li>
@@ -295,7 +295,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <form action="/logout" method="post">
+                      <form action="{{ url('/logout') }}" method="post">
                         @csrf
                       <button class="dropdown-item" type="submit">
                         <i class="bx bx-power-off me-2"></i>
