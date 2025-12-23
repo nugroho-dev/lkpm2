@@ -19,7 +19,7 @@
             <h4 class="mb-2">Selamat Datang 👋</h4>
             <p class="mb-4">Silakan "sign-in" menggunakan Nomor Induk Berusaha anda</p>
 
-            <form id="formAuthentication" class="mb-3" action="/login" method="POST">
+            <form id="formAuthentication" class="mb-3" action="{{ url('/login') }}" method="POST">
                @csrf
               <div class="mb-3">
                 <label for="email" class="form-label">Nomor NIB Anda</label>
