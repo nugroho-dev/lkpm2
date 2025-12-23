@@ -16,7 +16,7 @@
                     <div class="card-body">
                       <div class="row">
                         <div class="col-md-12">
-                          <form method="post" action="/proyek/laporan/{{ $post->id }}" enctype="multipart/form-data">
+                          <form method="post" action="{{ url('/proyek/laporan/' . $post->id) }}" enctype="multipart/form-data">
                             @method('put')
                             @csrf
 

@@ -8,7 +8,7 @@
           <div class="card-body">
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-              <a href="{{ route('login') }}" class="app-brand-link gap-2">
+              <a href="{{ url('/login') }}" class="app-brand-link gap-2">
                 <span class="app-brand-logo demo">
                    <img src="img/Seal_of_the_City_of_Magelang.png" class="img-fluid" alt="Responsive image">
                 </span>
